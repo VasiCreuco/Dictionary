@@ -1,10 +1,11 @@
-var x = 0;
-const array = Array();
+var index = 0;
+const array = [];
 
 function addWords() {
-	array[x] = document.getElementById("word").value;
-	$('#lists').append(array[x] + "<br>");
-	++x;
+	array[index] = document.getElementById("word").value;
+	document.getElementById("word").value = '';
+	document.getElementById("lists").innerHTML += array[index] + "<br>";
+	++index;
 }
 
 function refreshPage() {
@@ -12,10 +13,11 @@ function refreshPage() {
 }
 
 function isWordInDictionary() {
-	var val = document.getElementById('is_word').value;
-	if ($.inArray(val, array) > -1) {
-		window.alert("true");
+	var word = document.getElementById("is_word").value;
+	document.getElementById("is_word").value = '';
+	if (array.indexOf(word) > -1) {
+		window.alert("The word '" + word + "' is found in the dictionary");
 	} else {
-		window.alert("false");
+		window.alert("The word '" + word + "' is not found in the dictionary");
 	}
 }
